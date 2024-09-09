@@ -1,13 +1,15 @@
 {
   "name": "Banque-MaJ",
   "version": "1.0.0",
-  "description": "Un projet Node.js",
-  "main": "server.js",
+  "description": "Un projet Node.js pour la transmission des données bancaires",
+  "main": "src/server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node src/server.js"
   },
   "dependencies": {
     "express": "^4.17.1",
     "body-parser": "^1.19.0"
-  }
+  },
+  "author": "Scorpius Black",
+  "license": "MIT"
 }

